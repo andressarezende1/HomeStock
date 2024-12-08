@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&family=Roboto:wght@100;300;400;500;700;900&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+
+
+* {
+    margin: 0; /* controla o espaço MAIS FORA do elemento*/
+    padding: 0; /* controla o espaço PARA DENTRO do elemento.*/
+    box-sizing: border-box; /*Evita estouros de layout*/
+    font-family: 'Poppins', sans-serif; 
+}
+
+/* corpo da página */
+body {
+    width: 100vw; 
+    height: 100vh; 
+    display: flex; /* Usando flexbox para posicionamento */
+    align-items: center; /* Centralizando verticalmente */
+    justify-content: center; /* Centralizando horizontalmente */
+    background-color: rgba(0, 0, 0, 0.1); 
+}
+
+/* Estilo dos botões */
+button {
+    cursor: pointer; 
+}
+
+/* Botão de Incluir*/
+#new {
+    font-size: 16px; /* Tamanho da fonte do botão */
+    padding: 8px; /* Preenchimento interno do botão */
+    border-radius: 5px; /* Bordas arredondadas */
+    border: none; /* Removendo a borda */
+    color: white; /* Cor do texto do botão */
+    background-color: rgb(57, 57, 226); /* Cor de fundo do botão */
+}
+
+/*  container principal */
+.container {
+    width: 90%; 
+    height: 80%; 
+    border-radius: 10px; 
+    background: white; 
+}
+
+/*  cabeçalho */
+.header {
+    min-height: 70px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 12px;
+    background-color: rgb(132, 132, 238);
+}
+
+/*  texto dentro do cabeçalho */
+.header span {
+    font-weight: 900; 
+    font-size: 20px; 
+    word-break: break-all; /* Quebra de palavras, se necessário */
+}
+
+/*  área da tabela */
+.table {
+    padding: 10px; 
+    width: auto; /* Largura automática */
+    height: inherit; /* Herda a altura */
+    overflow: auto; /* Permite rolagem se o conteúdo exceder */
+}
+
+/* a barra de rolagem da tabela */
+.table::-scrollbar {
+    width: 12px; 
+    background-color: whitesmoke; 
+}
+
+/*a parte deslizante da barra.*/
+.table::-scrollbar-thumb {
+    border-radius: 10px; 
+    background-color: darkgray; 
+}
+
+/* Estilos gerais da tabela */
+table {
+    width: 100%; 
+    border-spacing: 10px; /* Espaçamento (de borda) entre as células da tabela */
+    word-break: break-all; /* Quebra de palavras dentro da célula */
+    border-collapse: collapse; /* Colapsando (mesclargem as bordas da tabela */
+}
+
+thead {
+    background-color: whitesmoke; 
+}
+
+/*  linhas da tabela */
+tr {
+  border-bottom: 1px solid rgb(238, 235, 235)!important; 
+}
+
+/*  células do corpo da tabela */
+tbody tr td {
+    vertical-align: text-top; /* Alinhamento do conteúdo da célula no topo */
+    padding: 6px;
+    max-width: 50px; 
+    }
+
+/*  células do cabeçalho */
+thead tr th {
+    padding: 5px; 
+    text-align: start; /* Alinhamento do texto à esquerda */
+    margin-bottom: 50px;
+}
+
+/* linhas do corpo da tabela */
+tbody tr {
+    margin-bottom: 50px; 
+}
+
+/*  colunas de ações (editar/excluir) */
+thead tr th.acao {
+    width: 100px!important; 
+    text-align: center; 
+}
+
+tbody tr td.acao {
+    text-align: center; 
+}
+
+/*  modal de edição */
+.modal-container {
+    width: 100vw; 
+    height: 100vh; 
+    position: fixed; /* Modal fixo na tela */
+    top: 0; 
+    left: 0; 
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+    display: none; /* Inicialmente o modal está invisível */
+    z-index: 999; /* Garantindo que o modal fique acima de outros elementos */
+    align-items: center; 
+    justify-content: center; 
+}
+
+/*  conteúdo do modal */
+.modal {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    padding: 40px; 
+    background-color: white; 
+    border-radius: 10px; 
+    width: 50%; 
+}
+
+/* label dentro do modal */
+.modal label {
+    font-size: 14px; 
+    width: 100%; 
+}
+
+/*  inputs de entrada do modal */
+.modal input {
+    width: 100%;
+    outline: none; /* Remover o contorno ao focar no campo */
+    padding: 5px 10px; 
+    margin-bottom: 20px;
+    border-top: none;
+    border-left: none; 
+    border-right: none; 
+    }
+
+/*  botão dentro do modal */
+.modal button {
+    width: 100%;
+    margin: 10px auto; 
+    outline: none; 
+    border-radius: 20px;
+    padding: 5px 10px; 
+    border: none; 
+    background-color: rgb(57, 57, 226); 
+    color: white; 
+    }
+
+/*  estado ativo do modal (quando ele é mostrado) */
+.active {
+    display: flex; /* Exibe o modal */
+}
+
+/* Animação para o modal aparecer suavemente */
+.active .modal {
+    animation: modal .4s; /* Animação de entrada do modal */
+}
+
+/* Definir o 'animation' no CSS para especificar os estados de(from)/para(to)*/
+@keyframes modal {
+  from {
+    opacity: 0; /* Começa invisível */
+    transform: translate3d(0, -60px, 0); /* Começa 60px acima */
+  }
+  to {
+    opacity: 1; /* Torna-se visível */
+    transform: translate3d(0, 0, 0); /* Movimenta-se para a posição original */
+  }
+}
+
+/*  botões dentro das células da tabela */
+td button {
+    border: none; 
+    outline: none;
+    background: transparent; /* Fundo transparente */
+}
+
+/* ícones dentro dos botões */
+td button i {
+    font-size: 25px; 
+}
+
+/* Estilo específico para o primeiro ícone dentro dos botões */
+td button i:first-child {
+    margin-right: 10px; /* Adiciona um espaço à direita do primeiro ícone */
+}
+
+
+@media (max-width: 700px) {
+    body {
+        font-size: 10px; /
+    }
+    
+    .header span {
+        font-size: 15px; 
+    }
+    
+    #new {
+        padding: 5px; 
+        font-size: 10px;
+    }
+    
+    thead tr th.acao {
+        width: auto!important; 
+    }
+    
+    td button i {
+        font-size: 20px!important; 
+    }
+    
+    td button i:first-child {
+        margin-right: 0; /* Removendo a margem direita do primeiro ícone */
+    }
+    
+    .modal {
+        width: 90%!important; /* Aumentando a largura do modal em dispositivos móveis */
+    }
+    
+    .modal label {
+        font-size: 12px!important; /* Ajustando o tamanho da fonte no modal */
+    }
+    }

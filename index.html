@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Importando os ícones da biblioteca Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="header">
+            <span>Controle de Estoque </span> 
+            <button onclick="openModal()" id="new">Incluir</button> 
+        </div>
+
+        <!-- Área da tabela onde os itens são listados -->
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th> 
+                        <th>Quantidade</th> 
+                        <th>Data de Validade</th> 
+                        <th class="acao">Editar</th> 
+                        <th class="acao">Excluir</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                <!-- Corpo da tabela onde os itens serão inseridos dinamicamente -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal que aparece quando o usuário clica para adicionar ou editar um item -->
+        <div class="modal-container">
+            <div class="modal">
+                <form>
+                    <label for="m-nome">Nome</label>
+                    <input id="m-nome" type="text" required /> 
+
+                    <label for="m-qtd">Quantidade</label>
+                    <input id="m-qtd" type="text" required /> 
+
+                    <label for="m-data">Data de Validade</label>
+                    <input id="m-data" type="date" required /> 
+
+                    <button id="btnSalvar">Salvar</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+<script src="script.js"></script>
+</body>
+
+</html>
