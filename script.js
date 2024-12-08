@@ -142,3 +142,57 @@ function loadItens() {
 });
 }
 
+
+// Função de pesquisa
+function search() {
+    // Obtém o valor da pesquisa
+    var input = document.getElementById("searchInput").value.trim().toLowerCase();
+    
+    // Se a pesquisa estiver vazia, não faz nada
+    if (input === "") {
+        return;
+    }
+
+    // Obtém todas as linhas da tabela
+    var rows = document.querySelectorAll("table tbody tr");
+
+    // Variável para verificar se encontramos pelo menos uma correspondência
+    let found = false;
+
+    // Itera sobre as linhas da tabela
+    rows.forEach(row => {
+        var nomeCell = row.cells[0]; // Assume que a pesquisa é no nome (primeira célula)
+        var nome = nomeCell.textContent.toLowerCase(); // Pega o nome do item na primeira célula
+
+        // Se o nome contiver o texto da pesquisa
+        if (nome.includes(input)) {
+            row.style.display = ""; // Exibe a linha
+            highlightText(nomeCell, input); // Destaca a palavra na célula
+            if (!found) {
+                row.scrollIntoView({ behavior: "smooth", block: "center" }); // Rola até o primeiro item encontrado
+                found = true; // Só rola até o primeiro item
+            }
+        } else {
+            row.style.display = "none"; // Oculta a linha se não corresponder
+        }
+    });
+}
+
+// Função para destacar o texto pesquisado nas células
+function highlightText(cell, searchTerm) {
+    var text = cell.textContent;
+    var regex = new RegExp('(' + searchTerm + ')', 'gi'); // Cria uma expressão regular para encontrar o termo
+
+    // Substitui o termo encontrado pelo mesmo texto, mas com a tag <span> para destaque
+    var highlightedText = text.replace(regex, '<span class="highlight">$1</span>');
+    
+    // Atualiza o conteúdo da célula com o texto destacado
+    cell.innerHTML = highlightedText;
+}
+
+// Função chamada ao pressionar "Enter"
+function checkEnter(event) {
+    if (event.key === "Enter") {
+        search(); // Chama a função de pesquisa quando "Enter" for pressionado
+    }
+}

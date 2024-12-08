@@ -33,6 +33,29 @@ button {
     background-color: rgb(57, 57, 226); /* Cor de fundo do botão */
 }
 
+.search-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+}
+
+/* Estilo do campo de entrada */
+#searchInput {
+    background-color: rgb(240, 240, 240);
+    border: 1px rgb(219, 219, 219) solid;
+    border-radius: 20px;
+    width: 300px;
+    font-size: 16px;
+    padding: 3px 20px;
+}
+
+/* Destaca as palavras encontradas em rosa */
+.highlight {
+    background-color: rgb(160, 160, 170);
+    color: white;
+    border-radius: 3px;
+}
 /*  container principal */
 .container {
     width: 90%; 
@@ -56,6 +79,12 @@ button {
     font-weight: 900; 
     font-size: 20px; 
     word-break: break-all; /* Quebra de palavras, se necessário */
+}
+
+.header02 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 /*  área da tabela */

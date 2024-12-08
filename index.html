@@ -13,10 +13,13 @@
 
 <body>
     <div class="container">
-
         <div class="header">
-            <span>Controle de Estoque </span> 
-            <button onclick="openModal()" id="new">Incluir</button> 
+            <span>Controle de Estoque</span>
+            <div class="search-box">
+                <button onclick="openModal()" id="new">Incluir</button> 
+                <input type="text" id="searchInput" placeholder="Digite para pesquisar..." onkeydown="checkEnter(event)">
+                <p id="result"></p>
+            </div>
         </div>
 
         <!-- Área da tabela onde os itens são listados -->
