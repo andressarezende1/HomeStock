@@ -143,12 +143,18 @@ function loadItens() {
 }
 
 
+/// Variável global para armazenar o termo de pesquisa atual
+let searchTerm = "";
+
 // Função de pesquisa
 function search() {
     // Obtém o valor da pesquisa
     var input = document.getElementById("searchInput").value.trim().toLowerCase();
     
-    // Se a pesquisa estiver vazia, não faz nada
+    // Armazena o termo de pesquisa
+    searchTerm = input;
+
+    // Se a pesquisa estiver vazia, não fazer nada
     if (input === "") {
         return;
     }
@@ -156,29 +162,19 @@ function search() {
     // Obtém todas as linhas da tabela
     var rows = document.querySelectorAll("table tbody tr");
 
-    // Variável para verificar se encontramos pelo menos uma correspondência
-    let found = false;
-
     // Itera sobre as linhas da tabela
     rows.forEach(row => {
-        var nomeCell = row.cells[0]; // Assume que a pesquisa é no nome (primeira célula)
+        var nomeCell = row.cells[0];
         var nome = nomeCell.textContent.toLowerCase(); // Pega o nome do item na primeira célula
-
-        // Se o nome contiver o texto da pesquisa
+        
+        // Se o nome contiver o texto da pesquisa, mostra a linha
         if (nome.includes(input)) {
-            row.style.display = ""; // Exibe a linha
-            highlightText(nomeCell, input); // Destaca a palavra na célula
-            if (!found) {
-                row.scrollIntoView({ behavior: "smooth", block: "center" }); // Rola até o primeiro item encontrado
-                found = true; // Só rola até o primeiro item
-            }
+            row.style.display = "";
+            highlightText(nomeCell, input); // Destaca o texto pesquisado na célula
         } else {
             row.style.display = "none"; // Oculta a linha se não corresponder
         }
     });
-
-    // Limpa a barra de pesquisa após a pesquisa
-    document.getElementById("searchInput").value = "";
 }
 
 // Função para destacar o texto pesquisado nas células
@@ -197,5 +193,35 @@ function highlightText(cell, searchTerm) {
 function checkEnter(event) {
     if (event.key === "Enter") {
         search(); // Chama a função de pesquisa quando "Enter" for pressionado
+        
+        // Limpa o campo de pesquisa após pressionar "Enter"
+        document.getElementById("searchInput").value = "";
     }
+}
+
+// Função para restaurar a tabela ao estado inicial e remover qualquer destaque
+function resetTable() {
+    // Obtém todas as linhas da tabela
+    var rows = document.querySelectorAll("table tbody tr");
+
+    // Mostra todas as linhas novamente e limpa qualquer destaque
+    rows.forEach(row => {
+        row.style.display = ""; // Exibe todas as linhas
+        var nomeCell = row.cells[0];
+        nomeCell.innerHTML = nomeCell.textContent; // Remove qualquer destaque do texto
+    });
+
+    // Limpa a barra de pesquisa
+    document.getElementById("searchInput").value = ""; // Limpa o campo de pesquisa
+
+    // Limpa o termo de pesquisa armazenado
+    searchTerm = ""; 
+}
+
+// Função para rolar a página até o topo e resetar a tabela
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Rola a página até o topo com efeito suave
+    
+    // Depois de rolar até o topo, restaura a tabela e limpa a pesquisa
+    resetTable();
 }

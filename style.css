@@ -240,6 +240,26 @@ td button i:first-child {
     margin-right: 10px; /* Adiciona um espaço à direita do primeiro ícone */
 }
 
+/* Estilo do botão Voltar ao Início */
+#backToTop {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color:  rgb(57, 57, 226);  /* Cor pink */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#backToTop:hover {
+    background-color:  rgb(103, 103, 221);  /* Cor mais escura para o hover */
+}
+
+
+
 
 @media (max-width: 700px) {
     body {
@@ -282,6 +302,13 @@ td button i:first-child {
     .modal label {
         font-size: 12px!important; /* Ajustando o tamanho da fonte no modal */
     }
-
+    #backToTop {
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 10px;
+        cursor: pointer;
 
     }
+
+
+}
