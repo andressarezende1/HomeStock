@@ -81,12 +81,6 @@ button {
     word-break: break-all; /* Quebra de palavras, se necessário */
 }
 
-.header02 {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
 /*  área da tabela */
 .table {
     padding: 10px; 
@@ -255,6 +249,14 @@ td button i:first-child {
     .header span {
         font-size: 15px; 
     }
+
+    #searchInput {
+    
+    border-radius: 20px;
+    width: 100px;
+    font-size: 8px;
+    padding: 2px 12px;
+    }
     
     #new {
         padding: 5px; 
@@ -280,4 +282,6 @@ td button i:first-child {
     .modal label {
         font-size: 12px!important; /* Ajustando o tamanho da fonte no modal */
     }
+
+
     }

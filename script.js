@@ -176,6 +176,9 @@ function search() {
             row.style.display = "none"; // Oculta a linha se não corresponder
         }
     });
+
+    // Limpa a barra de pesquisa após a pesquisa
+    document.getElementById("searchInput").value = "";
 }
 
 // Função para destacar o texto pesquisado nas células
